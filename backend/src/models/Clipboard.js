@@ -20,5 +20,3 @@ const ClipboardSchema=new mongoose.Schema({
 });
 
 export default mongoose.model('Clipboard', ClipboardSchema);
-
-// gsdy254buehd76
