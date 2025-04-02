@@ -12,9 +12,12 @@ connectDB();
 const app=express();
 
 app.use(cors({
-  origin:  'http://localhost:5173',
+  origin: [
+    'https://your-frontend.onrender.com',
+    'http://localhost:3000'
+  ],
   credentials: true
-}));
+}))
 app.use(express.json());
 
 
