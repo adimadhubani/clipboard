@@ -1,8 +1,10 @@
 import React,{useState} from 'react'
+import axios from "axios"
 
-import {axiosInstance} from '../lib/axios.js'
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+import { APIUrl } from '../lib/axios.js';
+
+// const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 const CreateClip= ()=>{
     const [content, setContent] = useState('');
@@ -17,8 +19,8 @@ const CreateClip= ()=>{
         setError('');
         
        try {
-
-        const res=await axiosInstance.post("/clipboard/",{content});
+console.log(APIUrl);
+        const res=await axios.post(`${APIUrl}/api/clipboard/`,{content});
         setCode(res.data.code);
         setContent('')
         

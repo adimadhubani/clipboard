@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { axiosInstance } from '../lib/axios.js';
+import axios from "axios"
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+import { APIUrl } from '../lib/axios.js';
+
+// const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 const RetrieveClip = () => {
   const [code, setCode] = useState('');
@@ -16,7 +18,7 @@ const RetrieveClip = () => {
     setContent('');
     
     try {
-      const res = await axiosInstance.get(`/clipboard/${code}`);
+      const res = await axios.get(`${APIUrl}/api/clipboard/${code}`);
       setContent(res.data.content);
     } catch (err) {
       setError(err.response?.data?.message || 'Clip not found');
